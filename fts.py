@@ -89,7 +89,7 @@ def _corrigir_termo(conn, termo: str) -> str:
     row = conn.execute(
         text("""
             SELECT word FROM unique_lexeme
-            WHERE similarity(word, :termo) > 0.5
+            WHERE similarity(word, :termo) >= 0.3
             ORDER BY word <-> :termo
             LIMIT 1;
         """),
